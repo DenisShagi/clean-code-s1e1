@@ -70,7 +70,7 @@ completedTask.addEventListener("click", (e) => {
     const taskItem = e.target.closest("li");
     taskItem.remove();
   }
-  
+
   if (e.target.classList.contains("edit")) {
     const taskItem = e.target.closest("li");
     const label = taskItem.querySelector("label");
@@ -83,9 +83,17 @@ completedTask.addEventListener("click", (e) => {
         label.textContent = input.value;
       }
     } else {
-        taskItem.classList.add('editMode')
-        e.target.textContent = 'Save';
-        input.value = label.textContent
+      taskItem.classList.add("editMode");
+      e.target.textContent = "Save";
+      input.value = label.textContent;
+    }
+  }
+
+  if (e.target.closest('input[type="checkbox"]')) {
+    const taskItem = e.target.closest("li");
+    if(!e.target.checked){
+        taskItem.remove()
+        taskList.appendChild(taskItem)
     }
   }
 });
