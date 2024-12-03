@@ -24,12 +24,10 @@ function addTask() {
     return;
   }
   taskList.insertAdjacentHTML("beforeend", newTaskHTML);
+
 }
 
-function editTask() {}
-
 buttonAdd.addEventListener("click", addTask);
-buttonEdit.addEventListener("click", editTask);
 
 taskList.addEventListener("click", (e) => {
   if (e.target.classList.contains("edit")) {
@@ -49,4 +47,11 @@ taskList.addEventListener("click", (e) => {
       input.value = label.textContent;
     }
   }
+
+  if (e.target.closest("button.delete")) {
+    e.target.closest("li")
+    const taskItem = e.target.closest('li')
+    taskItem.remove()
+  }
+  
 });
