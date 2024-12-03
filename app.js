@@ -60,7 +60,14 @@ taskList.addEventListener("click", (e) => {
     const taskItem = e.target.closest("li");
     if (e.target.checked) {
       taskItem.remove();
-      completedTask.appendChild(taskItem)
+      completedTask.appendChild(taskItem);
     }
+  }
+});
+
+completedTask.addEventListener("click", (e) => {
+  if (e.target.closest("button.delete")) {
+    const taskItem = e.target.closest("li");
+    taskItem.remove();
   }
 });
