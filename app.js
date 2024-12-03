@@ -70,4 +70,22 @@ completedTask.addEventListener("click", (e) => {
     const taskItem = e.target.closest("li");
     taskItem.remove();
   }
+  
+  if (e.target.classList.contains("edit")) {
+    const taskItem = e.target.closest("li");
+    const label = taskItem.querySelector("label");
+    const input = taskItem.querySelector('input[type="text"]');
+
+    if (taskItem.classList.contains("editMode")) {
+      taskItem.classList.remove("editMode");
+      e.target.textContent = "Edit";
+      if (input.value.trim() !== "") {
+        label.textContent = input.value;
+      }
+    } else {
+        taskItem.classList.add('editMode')
+        e.target.textContent = 'Save';
+        input.value = label.textContent
+    }
+  }
 });
